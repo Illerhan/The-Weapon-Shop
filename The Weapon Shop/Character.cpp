@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Character.h"
+#include "Weapon.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ Character::Character(std::string firstName,
 	std::string catchphrase,
 	float money,
 	int healthPoint,
-	WeaponType type,
+	class Weapon weapon,
 	std::string race,
 	std::string classe)
 	{
@@ -17,7 +18,7 @@ Character::Character(std::string firstName,
 		mCathchprase = catchphrase;
 		mMoney = money;
 		mHealthPoint = healthPoint;
-		mType = type;
+		Weapon mWeapon = weapon;
 		mRace = race;
 		mClasse = classe;
 
@@ -28,7 +29,7 @@ string Character::GetLastName() { return mLastName; }
 string Character::GetCathcphrase() { return mCathchprase; }
 float Character::GetMoney() { return mMoney; }
 int Character::GetHealthPoint() { return mHealthPoint; }
-WeaponType Character::GetWeapon() { return mType; }
+class Weapon Character::GetWeapon() { return mWeapon; }
 string Character::GetRace() { return mRace; }
 string Character::Getclass() { return mClasse; }
 
@@ -36,9 +37,9 @@ void Character::introduce() { cout << mCathchprase << endl; }
 void Character::takeDmg(float damageTaken) {
 	mHealthPoint -= damageTaken;
 }
-void Character::buyWeapon(WeaponType type, int price) {
+void Character::buyWeapon(class Weapon mWeapon, int mPrice) {
 }
-void Character::sellWeapon(WeaponType type, int price) {}
+void Character::sellWeapon(class Weapon mWeapon, int mPrice) {}
 void Character::useWeapon() {}
 void Character::lootMoney() {}
 void Character::lootWeapon() {}

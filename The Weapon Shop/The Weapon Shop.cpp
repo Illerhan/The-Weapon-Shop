@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	Weapon::Weapon("Sky's Staff",
+	Weapon SkyStaff("Sky's Staff",
 		"falen from the sky, near thunder impact, imbu with elements power",
 		WeaponType::Staff,
 		125.68,
@@ -18,12 +18,14 @@ int main()
 		364,
 		0.95);
 
-	Character::Character("Merlin",
+	cout << SkyStaff.GetDamage() << endl;
+
+	/*Character Merlin("Merlin",
 		"Hugebeard",
 		"Hi sire, time for some practice",
 		125,
 		150,
-		"Sky's Staff",
+		SkyStaff,
 		"Humain",
-		"Mage");
+		"Mage");*/
 }

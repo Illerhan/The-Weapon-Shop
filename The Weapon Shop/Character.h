@@ -8,7 +8,7 @@ class Character
 		std::string mCathchprase;
 		float mMoney;
 		int mHealthPoint;
-		Weapon mWeapon;
+		class Weapon mWeapon;
 		std::string mRace;
 		std::string mClasse;
 	public:
@@ -17,18 +17,18 @@ class Character
 			std::string catchphrase,
 			float money,
 			int healthPoint,
-			WeaponType type,
+			class Weapon weapon,
 			std::string race,
 			std::string classe);
 		~Character();
-		string GetFirstName();
-		string GetLastName();
-		string GetCathcphrase();
+		std::string GetFirstName();
+		std::string GetLastName();
+		std::string GetCathcphrase();
 		float GetMoney();
 		int GetHealthPoint();
 		Weapon GetWeapon();
-		string GetRace();
-		string Getclass();
+		std::string GetRace();
+		std ::string Getclass();
 
 		void introduce();
 		void takeDmg(float damageTaken);

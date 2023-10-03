@@ -1,5 +1,5 @@
 #pragma once
-
+#include "WeaponTypes.h"
 class Weapon
 {
 	private:
