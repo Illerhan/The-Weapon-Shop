@@ -5,8 +5,8 @@
 
 using namespace std;
 
-Weapon::Weapon(std::string name,
-	std::string descrition,
+Weapon::Weapon(const std::string& name,
+	const std::string& descrition,
 	WeaponType type,
 	float weight,
 	int damages,
@@ -20,15 +20,17 @@ Weapon::Weapon(std::string name,
 	mDurability = durability;
 }
 Weapon::~Weapon() {}
-string Weapon::GetName() { return mName; }
-string Weapon::GetDescription() { return mDescripton; }
+const string& Weapon::GetName() { return mName; }
+const string& Weapon::GetDescription() { return mDescripton; }
 WeaponType Weapon::GetType() { return mType; }
 float Weapon::GetWeight() { return mWeight; }
 int Weapon::GetDamage() { return mDamages; }
 int Weapon::GetPrice() { return mPrice; }
 float Weapon::GetDurability() { return mDurability; }
 
-void Weapon::setDurability() {
-
+void Weapon::use() {
+	if (mDurability > 0.0) {
+		mDurability -= 0.1;
+	}
 }
 

@@ -4,21 +4,21 @@
 
 using namespace std;
 
-Character::Character(std::string firstName,
-	std::string lastName,
-	std::string catchphrase,
+Character::Character(const std::string& firstName,
+	const std::string& lastName,
+	const std::string& catchphrase,
 	float money,
 	int healthPoint,
-	class Weapon weapon,
-	std::string race,
-	std::string classe)
+	const Weapon& weapon,
+	const std::string& race,
+	const std::string& classe)
 	{
 		mFirstName = firstName;
 		mLastName = lastName;
 		mCathchprase = catchphrase;
 		mMoney = money;
 		mHealthPoint = healthPoint;
-		Weapon mWeapon = weapon;
+		mWeapon = weapon;
 		mRace = race;
 		mClasse = classe;
 
@@ -33,6 +33,7 @@ class Weapon Character::GetWeapon() { return mWeapon; }
 string Character::GetRace() { return mRace; }
 string Character::Getclass() { return mClasse; }
 
+void Character::SetMoney(int money) { mMoney = money; }
 void Character::introduce() { cout << mCathchprase << endl; }
 void Character::takeDmg(float damageTaken) {
 	mHealthPoint -= damageTaken;

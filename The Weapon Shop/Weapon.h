@@ -13,23 +13,23 @@ class Weapon
 
 
 	public:
-		Weapon(std::string name,
-			std::string descrition,
+		Weapon(const std::string& name,
+			const std::string& descrition,
 			WeaponType type, 
 			float weight, 
 			int damages, 
 			int price, 
 			float durability);
 		~Weapon();
-		std::string GetName();
-		std::string GetDescription();
+		const std::string& GetName();
+		const std::string& GetDescription();
 		WeaponType GetType();
 		float GetWeight();
 		int GetDamage();
 		int GetPrice();
 		float GetDurability();
 
-		void setDurability();
+		void use();
 		void setPrice();
 };
 
