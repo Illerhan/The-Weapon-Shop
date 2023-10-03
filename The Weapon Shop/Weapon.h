@@ -30,7 +30,7 @@ class Weapon
 		float GetDurability();
 
 		void use();
-		void setPrice();
+
 };
 
 

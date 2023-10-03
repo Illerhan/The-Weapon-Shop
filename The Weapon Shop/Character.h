@@ -1,5 +1,6 @@
 #pragma once
 #include "WeaponTypes.h"
+#include "Merchant.h"
 class Character
 {
 	private:
@@ -30,14 +31,14 @@ class Character
 		std::string GetRace();
 		std ::string Getclass();
 		void SetMoney(int money);
+		void SetWeapon(Weapon weapon);
 
 		void introduce();
+		void buyWeaponFromMerchant(Merchant& merchant, Weapon& weaponToBuy);
+		void sellWeaponToMerchant(Merchant& merchant);
 		void takeDmg(float damageTaken);
-		void buyWeapon(Weapon type, int price);
-		void sellWeapon(Weapon type, int price);
-		void useWeapon();
-		void lootMoney();
-		void lootWeapon();
+		void useWeapon(Character& enemy);
+		void loot(Character& enemy);
 
 };
 
