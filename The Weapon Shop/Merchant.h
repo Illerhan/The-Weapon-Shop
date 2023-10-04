@@ -3,6 +3,9 @@
 #include "Weapon.h"
 #include "Character.h"
 
+
+using namespace std;
+
 class Merchant
 {
 	private:
@@ -18,13 +21,13 @@ class Merchant
 			const std::string& catchphrase,
 			int money
 			);
-
+		void introduce();
 		int calculBuyingCost(Weapon& weapon);
 		int calculSellPrice(Weapon& weapon);
 		
 		void sellWeapon(Weapon& weapon, Character& character);
 		void buyWeapon(Weapon& weapon, Character& character);
-		void getName();
-		void getShopName();
+		string getName();
+		string getShopName();
 };
 

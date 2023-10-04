@@ -1,42 +1,49 @@
 #pragma once
 #include "WeaponTypes.h"
-#include "Merchant.h"
+#include "Weapon.h"
+
+
+using namespace std;
+
+class Merchant;
+
 class Character
 {
 	private:
-		std::string mFirstName;
-		std::string mLastName;
-		std::string mCathchprase;
-		float mMoney;
+		string mFirstName;
+		string mLastName;
+		string mCathchprase;
+		double mMoney;
 		int mHealthPoint;
 		Weapon mWeapon;
-		std::string mRace;
-		std::string mClasse;
+		string mRace;
+		string mClasse;
 	public:
-		Character(const std::string& firstName,
-			const std::string& lastName,
-			const std::string& catchphrase,
-			float money,
+		Character(const string& firstName,
+			const string& lastName,
+			const string& catchphrase,
+			double money,
 			int healthPoint,
 			const Weapon& weapon,
-			const std::string& race,
-			const std::string& classe);
+			const string& race,
+			const string& classe);
 		~Character();
-		std::string GetFirstName();
-		std::string GetLastName();
-		std::string GetCathcphrase();
-		float GetMoney();
+		string GetFirstName();
+		string GetLastName();
+		string GetCathcphrase();
+		double GetMoney();
 		int GetHealthPoint();
 		Weapon GetWeapon();
-		std::string GetRace();
-		std ::string Getclass();
-		void SetMoney(int money);
+		string GetRace();
+		string Getclass();
+		void SetMoney(double money);
 		void SetWeapon(Weapon weapon);
 
+		void sellingWeapon(Weapon weapon, Merchant merchant);
+		void buyingWeapon(Weapon mWeapon, Merchant merchant);
+
 		void introduce();
-		void buyWeaponFromMerchant(Merchant& merchant, Weapon& weaponToBuy);
-		void sellWeaponToMerchant(Merchant& merchant);
-		void takeDmg(float damageTaken);
+		void takeDmg(int damageTaken);
 		void useWeapon(Character& enemy);
 		void loot(Character& enemy);
 

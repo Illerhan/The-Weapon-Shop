@@ -1,17 +1,19 @@
+
 #include <iostream>
 #include "Character.h"
 #include "Weapon.h"
+#include "Merchant.h"
 
 using namespace std;
 
-Character::Character(const std::string& firstName,
-	const std::string& lastName,
-	const std::string& catchphrase,
-	float money,
+Character::Character(const string& firstName,
+	const string& lastName,
+	const string& catchphrase,
+	double money,
 	int healthPoint,
 	const Weapon& weapon,
-	const std::string& race,
-	const std::string& classe)
+	const string& race,
+	const string& classe)
 	{
 		mFirstName = firstName;
 		mLastName = lastName;
@@ -28,39 +30,25 @@ Character::Character(const std::string& firstName,
 	string Character::GetFirstName() { return mFirstName; }
 	string Character::GetLastName() { return mLastName; }
 	string Character::GetCathcphrase() { return mCathchprase; }
-	float Character::GetMoney() { return mMoney; }
+	double Character::GetMoney() { return mMoney; }
 	int Character::GetHealthPoint() { return mHealthPoint; }
 	Weapon Character::GetWeapon() { return mWeapon; }
 	string Character::GetRace() { return mRace; }
 	string Character::Getclass() { return mClasse; }
 
-	void Character::SetMoney(int money) { mMoney = money; }
+	void Character::SetMoney(double money) { mMoney = money; }
 	void Character::SetWeapon(Weapon weapon) { mWeapon = weapon; }
 
 	void Character::introduce() { cout << mCathchprase << endl; }
-	void  Character::buyWeaponFromMerchant(Merchant& merchant, Weapon& weaponToBuy)
-	{ 
-		int cost = merchant.calculBuyingCost(weaponToBuy);
-		if (mMoney >= cost) {
-			mMoney -= cost;
-			merchant.sellWeapon(weaponToBuy, *this);
-			mWeapon = weaponToBuy;
-			cout << "Bought " << weaponToBuy.GetName() << " from " << merchant.getName() << " for " << cost << " gold coins." << endl;
-		}
-		else {
-			cout << "Not enough money to buy " << weaponToBuy.GetName() << " from " << merchant.getName() << "." << endl;
-		}
-	};
-	void  Character::sellWeaponToMerchant(Merchant& merchant)
-	{
-		int cost = merchant.calculSellPrice(mWeapon);
-		mMoney += cost;
-		cout << "Sold " << mWeapon.GetName() << " to " << merchant.getName() << " for " << cost << " gold coins." << endl;
-		merchant.buyWeapon(mWeapon, *this);
-		
-		
-	};
-	void Character::takeDmg(float damageTaken) {
+	void Character::sellingWeapon(Weapon weapon, Merchant merchant) {
+		merchant.buyWeapon(weapon, *this);
+	}
+
+	void Character::buyingWeapon(Weapon weapon, Merchant merchant) {
+		merchant.sellWeapon(weapon, *this);
+	}
+	
+	void Character::takeDmg(int damageTaken) {
 		mHealthPoint -= damageTaken;
 		if (mHealthPoint <= 0) {
 			mHealthPoint = 0;
@@ -69,8 +57,28 @@ Character::Character(const std::string& firstName,
 	}
 	void Character::loot(Character& enemy) {
 		mMoney += enemy.GetMoney();
+		cout << "You earned " << enemy.GetMoney() << endl;
 		enemy.SetMoney(0);
-		enemy.SetWeapon(Weapon("Hands", "No weapon equiped", WeaponType::Empty, 0.0, 0, 0, 0.0));
+		cout << "Would you like to take the " << enemy.GetWeapon().GetName() << " ? (yes/no)" << endl;
+		string answer;
+		
+		bool answered = false;
+		while(!answered){
+
+			cin >> answer;
+			if (answer == "yes" || answer == "Yes") {
+				mWeapon = enemy.GetWeapon();
+				enemy.SetWeapon(Weapon("Hands", "No weapon equiped", WeaponType::Empty, 0.0, 0, 0, 0.0));
+				answered = true;
+				cout << "You have now " << mWeapon.GetName() << endl;
+			}
+			else if (answer == "no" || answer == "No") {
+				answered = true;
+			}
+			else {
+				cout << "Please answer with yes or no" << endl;
+			}
+		} 
 	}
 	void Character::useWeapon(Character& enemy) 
 	{
@@ -78,10 +86,10 @@ Character::Character(const std::string& firstName,
 			mWeapon.use();
 			int damage = mWeapon.GetDamage();
 			enemy.takeDmg(damage);
-			std::cout <<mFirstName << " attacks " << enemy.GetFirstName() << " with " << mWeapon.GetName() << " for " << damage << " damage!" << std::endl;
+			cout <<mFirstName << " attacks " << enemy.GetFirstName() << " with " << mWeapon.GetName() << " for " << damage << " damage!" << endl;
 		}
 		else {
-			std::cout << mFirstName << " is defeated and cannot attack." << std::endl;
+			cout << mFirstName << " is defeated and cannot attack." << endl;
 		}
 
 	};

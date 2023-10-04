@@ -1,33 +1,37 @@
 #pragma once
 #include "WeaponTypes.h"
+
+
+using namespace std;
+
 class Weapon
 {
 	private:
-		std::string mName;
-		std::string mDescripton;
+		string mName;
+		string mDescription;
 		WeaponType mType;
-		float mWeight;
+		double mWeight;
 		int mDamages;
 		int mPrice;
-		float mDurability;
-
+		double mDurability;
 
 	public:
-		Weapon(const std::string& name,
-			const std::string& descrition,
+		Weapon(const string& name,
+			const string& description,
 			WeaponType type, 
-			float weight, 
+			double weight, 
 			int damages, 
 			int price, 
-			float durability);
+			double durability);
+		Weapon();
 		~Weapon();
-		const std::string& GetName();
-		const std::string& GetDescription();
+		const string& GetName();
+		const string& GetDescription();
 		WeaponType GetType();
-		float GetWeight();
+		double GetWeight();
 		int GetDamage();
 		int GetPrice();
-		float GetDurability();
+		double GetDurability();
 
 		void use();
 
