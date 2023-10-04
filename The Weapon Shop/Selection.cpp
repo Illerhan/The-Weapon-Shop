@@ -3,7 +3,7 @@
 #include "selection.h"
 
 
-void selectWeapon(Weapon weapons[], Character character) {
+static void selectWeapon(Weapon weapons[], Character character) {
 	cout << "Choose a weapon in this list between 1 and 6" << endl;
 
 	for (int i = 0; i < 6; i++) {
