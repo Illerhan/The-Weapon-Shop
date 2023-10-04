@@ -6,6 +6,7 @@
 #include "WeaponTypes.h"
 #include "Character.h"
 #include "Merchant.h"
+#include "selection.h"
 
 using namespace std;
 
@@ -83,53 +84,7 @@ int main()
 		"How can i help you non-online visitor ?",
 		1000);
 
-	cout << "Choose a weapon in this list between 1 and 6" << endl;
-
-	for (int i = 0; i < 6; i++) {
-
-		cout << weapons[i].GetName() << " - " << weapons[i].GetDescription() << " - Dmg -> " << weapons[i].GetDamage() << endl;
-	};
-
-	
-	bool selected = false;
-	
-	while (!selected) {
-		int choose;
-		cin >> choose;
-		switch (choose)
-			{
-			case 1:
-				Merlin.SetWeapon(weapons[0]);
-				selected = true;
-				break;
-			case 2:
-				Merlin.SetWeapon(weapons[1]);
-				selected = true;
-				break;
-			case 3:
-				Merlin.SetWeapon(weapons[2]);
-				selected = true;
-				break;
-			case 4:
-				Merlin.SetWeapon(weapons[3]);
-				selected = true;
-				break;
-			case 5:
-				Merlin.SetWeapon(weapons[4]);
-				selected = true;
-				break;
-			case 6:
-				Merlin.SetWeapon(weapons[5]);
-				selected = true;
-				break;
-			default:
-				
-				cout << "Please select a number between 1 and 6" << endl;
-				cin.clear();
-				cin.ignore(256, '\n');
-				break;
-			}
-	}
+	selectWeapon(weapons, Merlin);
 	
 	cout << Merlin.GetFirstName() << " : " << endl;
 	Merlin.introduce();

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Weapon.h"
 #include "WeaponTypes.h"
+#include "selection.h"
 
 
 using namespace std;

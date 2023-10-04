@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Weapon.h"
 #include "Merchant.h"
+#include "Selection.cpp"
 
 using namespace std;
 
