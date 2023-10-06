@@ -11,9 +11,8 @@ Attack::Attack(const std::string& m_name, const Weapon& m_weapon, int m_dmg, con
 	mWeapon(m_weapon),
 	mDmg(m_dmg),
 	mType(m_type),
-	mBonus(m_bonus)
-{
-}
+	mBonus(m_bonus){}
+
 	int Attack::getDmg()
 	{
 		return mDmg;

@@ -81,7 +81,7 @@ Character::Character(const string& firstName,
 			}
 		} 
 	}
-	void Character::useWeapon(Character& enemy) 
+	/*void Character::useWeapon(Character& enemy) 
 	{
 		if (mHealthPoint > 0) {
 			mWeapon.use();
@@ -93,5 +93,5 @@ Character::Character(const string& firstName,
 			cout << mFirstName << " is defeated and cannot attack." << endl;
 		}
 
-	};
+	};*/
 
