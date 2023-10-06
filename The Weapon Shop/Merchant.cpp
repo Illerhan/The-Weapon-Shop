@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Merchant.h"
 
-using namespace std;
 
 Merchant::Merchant(const string& name,
 	const string& shopName,

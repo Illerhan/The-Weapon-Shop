@@ -1,12 +1,12 @@
 // The Weapon Shop.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
 #include <iostream>
 #include "Weapon.h"
 #include "WeaponTypes.h"
 #include "Character.h"
 #include "Merchant.h"
 #include "selection.h"
+#include "Creature.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main()
 {
 	Weapon weapons[6];
 	weapons[0] = Weapon("Hands",
-		"Did you sell your weaons, or just lost it ? ",
+		"Did you sell your weapons, or just lost it ? ",
 		WeaponType::Empty,
 		0,
 		1,
@@ -22,7 +22,7 @@ int main()
 		0);
 
 	weapons[1] = Weapon("Sky's Staff",
-		"falen from the sky, near thunder impact, imbu with elements power",
+		"Fallen from the sky, near thunder impact, imbued with elements power",
 		WeaponType::Staff,
 		125.68,
 		12,
@@ -37,7 +37,7 @@ int main()
 		15,
 		0.8);
 	weapons[3] = Weapon("Thief Dagger",
-		"Perfect for peaople who wanna stab withour being cought",
+		"Perfect for peoples who wanna stab without being cought",
 		WeaponType::Dagger,
 		60.25,
 		15,
@@ -53,7 +53,7 @@ int main()
 		0.4
 	);
 	weapons[5] = Weapon("Frostmourne",
-		"As cold as the lich King's heart, it will froze all your ennemy",
+		"As cold as the liche King's heart, it will froze all your ennemy",
 		WeaponType::TwoHSword,
 		496,
 		60,

@@ -4,7 +4,6 @@
 #include "Character.h"
 
 
-using namespace std;
 
 class Merchant
 {

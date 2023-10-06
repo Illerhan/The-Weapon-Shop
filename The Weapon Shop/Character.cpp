@@ -58,7 +58,7 @@ Character::Character(const string& firstName,
 	}
 	void Character::loot(Character& enemy) {
 		mMoney += enemy.GetMoney();
-		cout << "You earned " << enemy.GetMoney() << endl;
+		cout << "You earned " << enemy.GetMoney() << " golds." << endl;
 		enemy.SetMoney(0);
 		cout << "Would you like to take the " << enemy.GetWeapon().GetName() << " ? (yes/no)" << endl;
 		string answer;

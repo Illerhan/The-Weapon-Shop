@@ -2,9 +2,6 @@
 #include "WeaponTypes.h"
 #include "Weapon.h"
 
-
-using namespace std;
-
 class Merchant;
 
 class Character
