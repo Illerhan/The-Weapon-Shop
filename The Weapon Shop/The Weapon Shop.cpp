@@ -1,6 +1,8 @@
 // The Weapon Shop.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
+
+#include "Attack.h"
 #include "Weapon.h"
 #include "WeaponTypes.h"
 #include "Character.h"
@@ -12,6 +14,7 @@ using namespace std;
 
 int main()
 {
+
 	Weapon weapons[6];
 	weapons[0] = Weapon("Hands",
 		"Did you sell your weapons, or just lost it ? ",
@@ -30,14 +33,14 @@ int main()
 		0.95);
 
 	weapons[2] = Weapon("Wood Club",
-		"A piece a wood used by oger when they're mad",
+		"A piece a wood used by ogre when they're mad",
 		WeaponType::OneHSword,
 		362.25,
 		5,
 		15,
 		0.8);
 	weapons[3] = Weapon("Thief Dagger",
-		"Perfect for peoples who wanna stab without being cought",
+		"Perfect for peoples who wanna stab without being caught",
 		WeaponType::Dagger,
 		60.25,
 		15,
@@ -53,30 +56,51 @@ int main()
 		0.4
 	);
 	weapons[5] = Weapon("Frostmourne",
-		"As cold as the liche King's heart, it will froze all your ennemy",
+		"As cold as the lich King's heart, it will froze all your ennemy",
 		WeaponType::TwoHSword,
 		496,
 		60,
 		1200,
 		1.0);
 
+	Attack Smash("Smash", weapons[2], 15 ,AttackType::Bludgeoning, 4);
+	Attack FireBlade("Fire blade", weapons[5], 24, AttackType::Burning, 2);
+	Attack BackStabe("Backstabe", weapons[3], 12, AttackType::Piercing, 8);
+	Attack FireBolt("FireBolt", weapons[1], 34, AttackType::Burning, 8);
+	vector<Attack*> Attacks;
+	Attacks.push_back(&Smash);
+	Attacks.push_back(&FireBlade);
+	Attacks.push_back(&BackStabe);
+	Attacks.push_back(&FireBolt);
+	vector<Weapon*> inventory;
+
 	Character Merlin("Merlin",
+		"Powerfull mage",
 		"Hugebeard",
 		"Hi sire, time for some practice",
-		500,
-		125,
+		250,
+		450,
+		Attacks,
+		12,
 		weapons[1],
 		"Human",
-		"Mage");
+		"Mage",
+		inventory
+		);
+	
 	
 	Character Shrek("Shrek",
+		"A really bad guy",
 		"",
 		"ME, heating HUMAN",
-		250,
-		10,
+		24,
+		300,
+		Attacks,
+		15,
 		weapons[2],
 		"Ogre",
-		"War");
+		"War",
+		inventory);
 
 	Merchant Amazon("Jeff",
 		"Amazon", 

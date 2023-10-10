@@ -143,10 +143,14 @@
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Merchant.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="selection.h" />
     <ClInclude Include="The Weapon Shop.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WeaponTypes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="The Weapon Shop.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,29 +1,38 @@
 #pragma once
 #include "WeaponTypes.h"
 #include "Weapon.h"
-
+#include "Creature.h"
+ 
 class Merchant;
 
-class Character
+class Character :
+	public Creature
 {
 	private:
 		string mFirstName;
 		string mLastName;
 		string mCathchprase;
 		double mMoney;
-		int mHealthPoint;
-		Weapon mWeapon;
 		string mRace;
 		string mClasse;
+		vector<Weapon*> mInventory;
+
 	public:
 		Character(const string& firstName,
+			const string& m_description,
 			const string& lastName,
 			const string& catchphrase,
-			double money,
-			int healthPoint,
-			const Weapon& weapon,
+			double money, int healthPoint,
+			vector<Attack*> m_attack, 
+			const int m_defense,
+			const Weapon& m_equipped_weapon,
 			const string& race,
-			const string& classe);
+			const string& classe,
+			vector<Weapon*> m_inventory) ;
+
+		Character();
+
+
 		~Character();
 		string GetFirstName();
 		string GetLastName();

@@ -4,11 +4,12 @@
 
 using namespace std;
 
-Creature::Creature(const string& m_name, const string& m_description, int m_health_point, const std::vector<Attack>& m_attack,
+Creature::Creature(const string& m_name, const string& m_description, int m_health_point, Weapon m_equipped_weapon ,const std::vector<Attack*>& m_attack,
 	int m_defense) :
 	mName(m_name),
 	mDescription(m_description),
 	mHealthPoint(m_health_point),
+	mEquippedWeapon(m_equipped_weapon),
 	mAttack(m_attack),
 	mDefense(m_defense)
 {
