@@ -2,7 +2,7 @@
 #include "Weapon.h"
 #include "Character.h"
 
-inline void selectWeapon(Weapon weapons[], Character character) {
+inline void selectWeapon(Weapon weapons[], Character& character) {
 	cout << "Choose a weapon in this list between 1 and 6" << endl;
 
 	for (int i = 0; i < 6; i++) {
@@ -19,7 +19,9 @@ inline void selectWeapon(Weapon weapons[], Character character) {
 		switch (choose)
 		{
 		case 1:
+			cout << character.GetWeapon().GetName() << endl;
 			character.SetWeapon(weapons[0]);
+			cout << character.GetWeapon().GetName() << endl;
 			selected = true;
 			break;
 		case 2:

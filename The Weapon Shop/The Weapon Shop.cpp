@@ -10,6 +10,8 @@
 #include "selection.h"
 #include "Creature.h"
 
+#define MAX_CATCHPHRASE_LENGTH 60
+
 using namespace std;
 
 int main()
@@ -74,10 +76,22 @@ int main()
 	Attacks.push_back(&FireBolt);
 	vector<Weapon> inventory;
 
-	Character Merlin("Merlin",
+	string firstName;
+	string lastName;
+	char catchphrase[MAX_CATCHPHRASE_LENGTH];
+	cout << "Enter your character first name" << endl;
+	cin >> firstName;
+	cout << "Enter your character last name" << endl;
+	cin >> lastName;
+	cout << "Enter your character catchphrase (max 60 char)" << endl;
+	cin.ignore();
+	cin.getline(catchphrase,MAX_CATCHPHRASE_LENGTH);
+
+
+	Character Player(firstName,
 		"Powerfull mage",
-		"Hugebeard",
-		"Hi sire, time for some practice",
+		lastName,
+		catchphrase,
 		250,
 		450,
 		Attacks,
@@ -108,20 +122,20 @@ int main()
 		"How can i help you non-online visitor ?",
 		1000);
 
-	selectWeapon(weapons, Merlin);
+	selectWeapon(weapons, Player);
 	
-	cout << Merlin.GetFirstName() << " : " << endl;
-	Merlin.introduce();
+	cout << Player.GetFirstName() << " : " << endl;
+	Player.introduce();
 	cout << Shrek.GetFirstName() << " : " << endl;
 	Shrek.introduce();
-	Merlin.useWeapon(Shrek);
-	Merlin.loot(Shrek);
-	cout << "you have " << Merlin.getInventory().at(0).GetName() << endl;
-
+	Player.useWeapon(Shrek);
+	Player.loot(Shrek);
+	cout << "you have " << Player.getInventory().at(0).GetName() << endl;
+	cout << Player.GetWeapon().GetName() << endl;
 	cout << Amazon.getName() << " : " << endl;
 	Amazon.introduce();
-	Merlin.buyingWeapon(weapons[1], Amazon);
-	Merlin.sellingWeapon(Merlin.GetWeapon(), Amazon);
+	Player.buyingWeapon(weapons[1], Amazon);
+	Player.sellingWeapon(Player.GetWeapon(), Amazon);
 
 	
 }
