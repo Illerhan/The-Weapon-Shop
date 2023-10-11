@@ -19,7 +19,7 @@ Character::Character(const string& firstName,
 	const Weapon& m_equipped_weapon,
 	const string& race,
 	const string& classe,
-	vector<Weapon*> m_inventory): Creature(firstName,
+	vector<Weapon> m_inventory): Creature(firstName,
 		m_description,
 		healthPoint,
 		m_equipped_weapon,
@@ -47,6 +47,11 @@ Character::~Character() = default;
 	string Character::GetFirstName() { return mFirstName; }
 	string Character::GetLastName() { return mLastName; }
 	string Character::GetCathcphrase() { return mCathchprase; }
+	vector<Weapon> Character::getInventory()
+	{
+		return mInventory;
+	}
+ 
 	double Character::GetMoney() { return mMoney; }
 	int Character::GetHealthPoint() { return mHealthPoint; }
 	Weapon Character::GetWeapon() { return mEquippedWeapon; }
@@ -64,14 +69,19 @@ Character::~Character() = default;
 	void Character::buyingWeapon(Weapon weapon, Merchant merchant) {
 		merchant.sellWeapon(weapon, *this);
 	}
-	
-	void Character::takeDmg(int damageTaken) {
-		mHealthPoint -= damageTaken;
-		if (mHealthPoint <= 0) {
-			mHealthPoint = 0;
-			cout << mFirstName << " Was slain" << endl;
-		}
+
+	void Character::addInventory(Weapon weapon)
+	{
+		mInventory.push_back(weapon);
 	}
+
+	void Character::takeDmg(int damageTaken) {
+			mHealthPoint -= damageTaken;
+			if (mHealthPoint <= 0) {
+				mHealthPoint = 0;
+				cout << mFirstName << " Was slain" << endl;
+			}
+		}
 	void Character::useWeapon(Character& enemy)
 	{
 	}
@@ -87,7 +97,7 @@ Character::~Character() = default;
 
 			cin >> answer;
 			if (answer == "yes" || answer == "Yes") {
-				mEquippedWeapon = enemy.GetWeapon();
+				addInventory(enemy.GetWeapon());
 				enemy.SetWeapon(Weapon("Hands", "No weapon equiped", WeaponType::Empty, 0.0, 0, 0, 0.0));
 				answered = true;
 				cout << "You have now " << mEquippedWeapon.GetName() << endl;

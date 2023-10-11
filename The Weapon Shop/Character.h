@@ -15,7 +15,7 @@ class Character :
 		double mMoney;
 		string mRace;
 		string mClasse;
-		vector<Weapon*> mInventory;
+		vector<Weapon> mInventory;
 
 	public:
 		Character(const string& firstName,
@@ -28,7 +28,7 @@ class Character :
 			const Weapon& m_equipped_weapon,
 			const string& race,
 			const string& classe,
-			vector<Weapon*> m_inventory) ;
+			vector<Weapon> m_inventory) ;
 
 		Character();
 
@@ -37,6 +37,7 @@ class Character :
 		string GetFirstName();
 		string GetLastName();
 		string GetCathcphrase();
+		vector<Weapon> getInventory();
 		double GetMoney();
 		int GetHealthPoint();
 		Weapon GetWeapon();
@@ -48,6 +49,7 @@ class Character :
 		void sellingWeapon(Weapon weapon, Merchant merchant);
 		void buyingWeapon(Weapon mWeapon, Merchant merchant);
 
+		void addInventory(Weapon weapon);
 		void introduce();
 		void takeDmg(int damageTaken);
 		void useWeapon(Character& enemy);

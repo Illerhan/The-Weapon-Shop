@@ -72,7 +72,7 @@ int main()
 	Attacks.push_back(&FireBlade);
 	Attacks.push_back(&BackStabe);
 	Attacks.push_back(&FireBolt);
-	vector<Weapon*> inventory;
+	vector<Weapon> inventory;
 
 	Character Merlin("Merlin",
 		"Powerfull mage",
@@ -116,6 +116,7 @@ int main()
 	Shrek.introduce();
 	Merlin.useWeapon(Shrek);
 	Merlin.loot(Shrek);
+	cout << "you have " << Merlin.getInventory().at(0).GetName() << endl;
 
 	cout << Amazon.getName() << " : " << endl;
 	Amazon.introduce();
