@@ -99,7 +99,7 @@ Character::~Character() = default;
 			if (answer == "yes" || answer == "Yes") {
 				addInventory(enemy.GetWeapon());
 				cout << "You have now " << mEquippedWeapon.GetName() << "in your ineventory" << endl;
-				enemy.SetWeapon(Weapon("Hands", "No weapon equiped", WeaponType::Empty, 0.0, 0, 0, 0.0));
+				enemy.SetWeapon(Weapon("Hands", "No weapon equiped",  0 , 0.0, 0, 0, 0.0));
 				answered = true;
 				
 			}

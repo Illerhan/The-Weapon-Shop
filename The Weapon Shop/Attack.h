@@ -6,15 +6,15 @@
 class Attack
 {
 public:
-	Attack(const std::string& m_name, const Weapon& m_weapon, int m_dmg, const AttackType& m_type, int m_bonus);
+	Attack(const std::string& m_name, int m_dmg, const AttackType& m_type, int m_bonus);
 
 	int getDmg();
 	int  bonusCalculation(int mDmg);
 	void doesHit(int dmg, Creature enemy);
+	std::string getName();
 
 private:
 	std::string mName;
-	Weapon mWeapon;
 	int mDmg;
 	AttackType mType;
 	int mBonus;

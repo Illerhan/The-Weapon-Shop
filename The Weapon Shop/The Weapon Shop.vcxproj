@@ -144,6 +144,7 @@
     <ClInclude Include="Merchant.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="selectAttacks.h" />
     <ClInclude Include="selection.h" />
     <ClInclude Include="The Weapon Shop.h" />
     <ClInclude Include="Weapon.h" />

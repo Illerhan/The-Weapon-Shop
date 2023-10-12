@@ -6,12 +6,18 @@
 
 using namespace std;
 
-Attack::Attack(const std::string& m_name, const Weapon& m_weapon, int m_dmg, const AttackType& m_type, int m_bonus)
+Attack::Attack(const std::string& m_name,  int m_dmg, const AttackType& m_type, int m_bonus)
 	: mName(m_name),
-	mWeapon(m_weapon),
+
 	mDmg(m_dmg),
 	mType(m_type),
 	mBonus(m_bonus){}
+
+	std::string Attack::getName()
+	{
+		return mName;
+	}
+
 
 	int Attack::getDmg()
 	{

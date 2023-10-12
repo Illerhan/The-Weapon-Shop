@@ -18,10 +18,12 @@ public:
 		int m_defense);
 	Creature();
 
+	void defineAttacks(Creature enemy);
 	void attack(Creature enemy, Attack attack);
 	int getDefense();
 	int getHealthPoint();
 	void takeDmg(int dmg);
+	vector<Attack*> getAttack();
 
 protected:
 	std::string mName;
