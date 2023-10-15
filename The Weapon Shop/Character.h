@@ -53,7 +53,7 @@ class Character :
 		void addInventory(Weapon weapon);
 		void introduce();
 		void takeDmg(int damageTaken);
-		void useWeapon(Monster& enemy);
+		void useWeapon(Monster &enemy);
 		void loot(Monster& enemy);
 
 };

@@ -1,5 +1,6 @@
 #include "Creature.h"
 
+#include <codecvt>
 #include <iostream>
 
 #include "Attack.h"
@@ -19,7 +20,8 @@ Creature::Creature(const string& m_name, const string& m_description, int m_heal
 
 }
 
-void Creature::defineAttacks(Creature enemy)
+
+void Creature::defineAttacks(Creature& enemy)
 {
 	uint8_t type = mEquippedWeapon.GetType();
 
@@ -28,7 +30,7 @@ void Creature::defineAttacks(Creature enemy)
 	int selectedAttack;
 
 	bool selected = false;
-
+	
 	while (!selected) {
 		cin >> selectedAttack;
 		switch (selectedAttack)
@@ -46,7 +48,7 @@ void Creature::defineAttacks(Creature enemy)
 			selected = true;
 			break;
 		default:
-			cout << "Please only use numbers betwean 1 and " << count;
+			cout << "Please only use numbers betwean 1 and " << count << endl;
 			cin.clear();
 			cin.ignore(256, '\n');
 			break;
@@ -65,10 +67,18 @@ int Creature::getHealthPoint()
 	return mHealthPoint;
 }
 
+void Creature::setHealthPoint(int value){
+	mHealthPoint -= value;
+}
+
 
 void Creature::takeDmg(int dmg)
 {
 	mHealthPoint -= dmg;
+	if (mHealthPoint <= 0) {
+		mHealthPoint = 0;
+		cout << mName << " Was slain" << endl;
+	};
 }
 
 vector<Attack*> Creature::getAttack()
@@ -76,7 +86,7 @@ vector<Attack*> Creature::getAttack()
 	return mAttack;
 }
 
-void Creature::attack(Creature enemy, Attack attack)
+void Creature::attack(Creature &enemy, Attack attack)
 {
 	attack.doesHit(attack.getDmg(), enemy);
 }

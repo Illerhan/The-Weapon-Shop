@@ -129,16 +129,25 @@ int main()
 	
 	cout << Player.GetFirstName() << " : " << endl;
 	Player.introduce();
-	cout << Shrek.getName() << " : " << endl;
-	Player.useWeapon(Shrek);
+	cout <<  Shrek.getName() << " wanna fight. " << endl;
+	while (Player.GetHealthPoint() > 0 || Shrek.getHealthPoint() > 0)
+	{
+		Player.defineAttacks(Shrek);
+		Shrek.defineAttacks(Player);
+	};
 
-	Player.defineAttacks(Shrek);
-	
-	if(!Player.getInventory().empty()){
-		cout << "You have " << Player.getInventory().at(0).GetName() << endl;
-	}
-	cout << Amazon.getName() << " : " << endl;
 	Player.loot(Shrek);
+
+	if (!Player.getInventory().empty()) {
+		cout << "You have :" << endl;
+		for (int i = 0; i < Player.getInventory().size(); ++i)
+		{
+			cout << Player.getInventory().at(i).GetName() << endl;
+		}
+
+	};
+
+	cout << Amazon.getName() << " : " << endl;
 	Amazon.introduce();
 	Player.buyingWeapon(weapons[1], Amazon);
 	Player.sellingWeapon(Player.GetWeapon(), Amazon);

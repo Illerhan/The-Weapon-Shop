@@ -75,19 +75,19 @@ Character::~Character() = default;
 		mInventory.push_back(weapon);
 	}
 
-	void Character::takeDmg(int damageTaken) {
+	/*void Character::takeDmg(int damageTaken) {
 			mHealthPoint -= damageTaken;
 			if (mHealthPoint <= 0) {
 				mHealthPoint = 0;
 				cout << mFirstName << " Was slain" << endl;
 			}
-		}
+		}*/
 	void Character::useWeapon(Monster& enemy)
 	{
 	}
-	void Character::loot(Monster& enemy) {
+	void Character::loot(Monster &enemy) {
 		Weapon getWeapon = enemy.lootWeapon();
-		cout << "Would you like to take the " << getWeapon.GetName() << " ? (yes/no)" << endl;
+		
 		string answer;
 		
 		bool answered = false;
@@ -95,6 +95,7 @@ Character::~Character() = default;
 		{
 			return;
 		}
+		cout << "Would you like to take the " << getWeapon.GetName() << " ? (yes/no)" << endl;
 			while (!answered) {
 				cin >> answer;
 				if (answer == "yes" || answer == "Yes") {

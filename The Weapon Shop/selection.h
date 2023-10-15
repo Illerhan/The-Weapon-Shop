@@ -19,21 +19,22 @@ inline void selectWeapon(Weapon weapons[], Character& character) {
 		switch (choose)
 		{
 		case 1:
-			cout << character.GetWeapon().GetName() << endl;
 			character.SetWeapon(weapons[0]);
-			cout << character.GetWeapon().GetName() << endl;
 			selected = true;
 			break;
 		case 2:
 			character.SetWeapon(weapons[1]);
+
 			selected = true;
 			break;
 		case 3:
 			character.SetWeapon(weapons[2]);
+
 			selected = true;
 			break;
 		case 4:
 			character.SetWeapon(weapons[3]);
+
 			selected = true;
 			break;
 		case 5:
@@ -51,5 +52,6 @@ inline void selectWeapon(Weapon weapons[], Character& character) {
 			cin.ignore(256, '\n');
 			break;
 		}
+		cout << "You earned " << character.GetWeapon().GetName() << endl;
 	}
 }

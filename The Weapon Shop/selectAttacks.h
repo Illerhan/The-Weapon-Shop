@@ -9,8 +9,7 @@
 inline vector<Attack*> selectAttacks(uint8_t type, vector<Attack*> attacks)
 {
 	vector<Attack*> availableAttacks;
-	cout << "vector size :" << attacks.size() << endl;
-	cout << std::to_string(static_cast<int>(type)) << endl;
+	cout << "Select an attack :" << endl;
 	int count = 0;
 	if ((type & (WeaponTypes::Dagger | WeaponTypes::TwoHSword | WeaponTypes::OneHSword |  WeaponTypes::Lance)))
 	{

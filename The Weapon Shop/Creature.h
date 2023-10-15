@@ -17,9 +17,9 @@ public:
 		const std::vector<Attack*>& m_attack,
 		int m_defense);
 	Creature();
-
-	void defineAttacks(Creature enemy);
-	void attack(Creature enemy, Attack attack);
+	void setHealthPoint(int value); 
+	void defineAttacks(Creature& enemy);
+	void attack(Creature &enemy, Attack attack);
 	int getDefense();
 	int getHealthPoint();
 	void takeDmg(int dmg);

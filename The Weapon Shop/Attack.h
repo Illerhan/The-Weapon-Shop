@@ -10,7 +10,7 @@ public:
 
 	int getDmg();
 	int  bonusCalculation(int mDmg);
-	void doesHit(int dmg, Creature enemy);
+	void doesHit(int dmg, Creature &enemy);
 	std::string getName();
 
 private:
