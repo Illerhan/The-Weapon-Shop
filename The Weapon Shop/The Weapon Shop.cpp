@@ -8,6 +8,7 @@
 #include "Merchant.h"
 #include "selection.h"
 #include "Creature.h"
+#include "Monster.h"
 
 
 #define MAX_CATCHPHRASE_LENGTH 60
@@ -70,7 +71,7 @@ int main()
 	Attack BackStabe("Backstabe",  12, AttackType::Piercing, 8);
 	Attack FireBolt("FireBolt",  34, AttackType::Burning, 8);
 	Attack TrueShot("PoisonShot", 16, AttackType::Poisoning, 4);
-	Attack Punch("FireBolt",  8, AttackType::Bludgeoning, 7);
+	Attack Punch("Punch",  8, AttackType::Bludgeoning, 7);
 	Attack Pierce("Pierce", 20, AttackType::Piercing, 9);
 	vector<Attack*> Attacks;
 	Attacks.push_back(&Smash);
@@ -81,6 +82,7 @@ int main()
 	Attacks.push_back(&Punch);
 	Attacks.push_back(&Pierce);
 	vector<Weapon> inventory;
+	vector<Weapon> loot{weapons[1],weapons[2] ,weapons[3] ,weapons[4] ,weapons[5] };
 
 	string firstName;
 	string lastName;
@@ -109,18 +111,13 @@ int main()
 		);
 	
 	
-	Character Shrek("Shrek",
-		"A really bad guy",
-		"",
-		"ME, heating HUMAN",
-		24,
-		300,
-		Attacks,
+	Monster Shrek("Shrek",
+		"A really bad guy",		
+		300,		
+		weapons[2],		
+		Attacks,		
 		15,
-		weapons[2],
-		"Ogre",
-		"War",
-		inventory);
+		loot);
 
 	Merchant Amazon("Jeff",
 		"Amazon", 
@@ -132,17 +129,16 @@ int main()
 	
 	cout << Player.GetFirstName() << " : " << endl;
 	Player.introduce();
-	cout << Shrek.GetFirstName() << " : " << endl;
-	Shrek.introduce();
+	cout << Shrek.getName() << " : " << endl;
 	Player.useWeapon(Shrek);
-	Player.loot(Shrek);
-	cout << Player.GetWeapon().GetName() << endl;
+
 	Player.defineAttacks(Shrek);
 	
-	if(Player.getInventory().size()>0){
-		cout << "you have " << Player.getInventory().at(0).GetName() << endl;
+	if(!Player.getInventory().empty()){
+		cout << "You have " << Player.getInventory().at(0).GetName() << endl;
 	}
 	cout << Amazon.getName() << " : " << endl;
+	Player.loot(Shrek);
 	Amazon.introduce();
 	Player.buyingWeapon(weapons[1], Amazon);
 	Player.sellingWeapon(Player.GetWeapon(), Amazon);

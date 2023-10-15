@@ -82,34 +82,34 @@ Character::~Character() = default;
 				cout << mFirstName << " Was slain" << endl;
 			}
 		}
-	void Character::useWeapon(Character& enemy)
+	void Character::useWeapon(Monster& enemy)
 	{
 	}
-	void Character::loot(Character& enemy) {
-		mMoney += enemy.GetMoney();
-		cout << "You earned " << enemy.GetMoney() << " golds." << endl;
-		enemy.SetMoney(0);
-		cout << "Would you like to take the " << enemy.GetWeapon().GetName() << " ? (yes/no)" << endl;
+	void Character::loot(Monster& enemy) {
+		Weapon getWeapon = enemy.lootWeapon();
+		cout << "Would you like to take the " << getWeapon.GetName() << " ? (yes/no)" << endl;
 		string answer;
 		
 		bool answered = false;
-		while(!answered){
+		if (getWeapon.GetType() & WeaponTypes::Empty)
+		{
+			return;
+		}
+			while (!answered) {
+				cin >> answer;
+				if (answer == "yes" || answer == "Yes") {
+					addInventory(getWeapon);
+					cout << "You have now " << getWeapon.GetName() << "in your inventory" << endl;
+					answered = true;
 
-			cin >> answer;
-			if (answer == "yes" || answer == "Yes") {
-				addInventory(enemy.GetWeapon());
-				cout << "You have now " << mEquippedWeapon.GetName() << "in your ineventory" << endl;
-				enemy.SetWeapon(Weapon("Hands", "No weapon equiped",  0 , 0.0, 0, 0, 0.0));
-				answered = true;
-				
-			}
-			else if (answer == "no" || answer == "No") {
-				answered = true;
-			}
-			else {
-				cout << "Please answer with yes or no" << endl;
-			}
-		} 
+				}
+				else if (answer == "no" || answer == "No") {
+					answered = true;
+				}
+				else {
+					cout << "Please answer with yes or no" << endl;
+				}
+		}
 	}
 	/*void Character::useWeapon(Character& enemy) 
 	{
